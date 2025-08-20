@@ -7,7 +7,6 @@ class ProductsController < ApplicationController
   end
 
   def show
-    
   end
 
   def new
@@ -25,11 +24,9 @@ class ProductsController < ApplicationController
 
 
   def edit
-    
   end
 
   def update
-    
     if @product.update(product_params)
       redirect_to @product
     else
@@ -49,7 +46,6 @@ class ProductsController < ApplicationController
     end
 
     def product_params
-      params.expect(product: [ :name, :description ])
+      params.require(:product).permit(:name, :description, :featured_image, :inventory_count)
     end
-
 end

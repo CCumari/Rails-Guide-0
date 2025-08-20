@@ -15,6 +15,7 @@
         <% end %>
         <h3><%= product.name %></h3>
       <% end %>
+      <p>Average rating: <%= product.reviews.average(:rating)&.round(2) || "No reviews yet" %></p>
     </div>
   <% end %>
 </div>

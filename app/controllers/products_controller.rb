@@ -7,6 +7,8 @@ class ProductsController < ApplicationController
   end
 
   def show
+    # Load reviews with their users for display
+    @reviews = @product.reviews.includes(:user).order(created_at: :desc)
   end
 
   def new

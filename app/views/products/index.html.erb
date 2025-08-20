@@ -4,10 +4,17 @@
 
 <%= link_to "New product", new_product_path if authenticated? %>
 
-<div id="products">
+<div id="products" class="product-grid">
   <% @products.each do |product| %>
-    <div>
-      <%= link_to product.name, product %>
+    <div class="product-card">
+      <%= link_to product do %>
+        <% if product.featured_image.attached? %>
+          <%= image_tag product.featured_image, class: "product-thumbnail" %>
+        <% else %>
+          <div class="product-thumbnail-placeholder"></div>
+        <% end %>
+        <h3><%= product.name %></h3>
+      <% end %>
     </div>
   <% end %>
 </div>
